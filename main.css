@@ -33,12 +33,12 @@ table {
     background-color: darkgray;
 }
 
-#gameRunControls {
+#gameRunButton {
     float: left;
 }
 
 #gamePresetControls {
-    margin-left: 2rem;
+    margin-left: 1.25rem;
 }
 
 #gameSpeedControls {
