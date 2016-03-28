@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#gameWrapper {
+    display: inline-block;
+}
+
+table {
+    background-color: #112530;
+    padding: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.cell {
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0.05rem;
+    background-color: #0F1A20;
+}
+
+.cell:not(.alive):hover {
+    background-color: slategray;
+}
+
+.alive {
+    background-color: ghostwhite;
+}
+
+.alive:hover {
+    background-color: darkgray;
+}
+
+#gameRunControls {
+    float: left;
+}
+
+#gamePresetControls {
+    margin-left: 2rem;
+}
+
+#gameSpeedControls {
+    float: right;
+}
+
+#gameSpeedDisplay {
+    display: inline-block;
+    text-align: center;
+    width: 2.5rem;
+}
+
+input[type="button"] {
+    padding: 0.05rem 0.5rem;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
