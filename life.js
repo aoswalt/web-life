@@ -100,6 +100,8 @@ setCellLife(4, 3, true);
 setCellLife(3, 2, true);
 setCellLife(2, 7, true);
 updateCells();
-tick();
+
+var loop = setInterval(tick, 1000 / $("#gameSpeedDisplay").text());
+clearInterval(loop);
 
 //alert(cellCount + "  " + width + "  " + height + "  " + activeCellList.length);
