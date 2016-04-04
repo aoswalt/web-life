@@ -11,6 +11,8 @@ var grid = [];
 //NOTE(adam): 1d arrays representing life of 2d grid (x + y * w)
 var activeCellList = [];
 var tempCellList = [];
+var loopInterval;
+var running = false;
 
 
 function get1dIndex(x, y) {
@@ -92,6 +94,20 @@ for(var i = 0; i != cellCount; ++i) {
     tempCellList.push(false);
 }
 
+$("#gameRunButton").prop("value", "Run");
+$("#gameRunButton").click(function() {
+    //alert($(this).value());
+    if(!running) {
+        loopInterval = setInterval(tick, 1000 / $("#gameSpeedDisplay").text());
+        running = true;
+        $(this).prop("value", "Stop");
+    } else {
+        clearInterval(loopInterval);
+        running = false;
+        $(this).prop("value", "Run");
+    }
+});
+
 
 setCellLife(2, 4, true);
 setCellLife(3, 4, true);
@@ -101,7 +117,5 @@ setCellLife(3, 2, true);
 setCellLife(2, 7, true);
 updateCells();
 
-var loop = setInterval(tick, 1000 / $("#gameSpeedDisplay").text());
-clearInterval(loop);
 
 //alert(cellCount + "  " + width + "  " + height + "  " + activeCellList.length);
