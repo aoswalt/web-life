@@ -11,8 +11,11 @@ var grid = [];
 //NOTE(adam): 1d arrays representing life of 2d grid (x + y * w)
 var activeCellList = [];
 var tempCellList = [];
+
 var loopInterval;
 var running = false;
+var $gameSpeed = $("#gameSpeedDisplay");
+var curSpeed = parseFloat($gameSpeed.text());
 
 
 function get1dIndex(x, y) {
@@ -78,6 +81,18 @@ function tick() {
     updateCells();
 }
 
+function startLoop() {
+    loopInterval = setInterval(tick, 1000 / $gameSpeed.text());
+    running = true;
+    $(this).prop("value", "Stop");
+}
+
+function stopLoop() {
+    clearInterval(loopInterval);
+    running = false;
+    $(this).prop("value", "Run");
+}
+
 
 //NOTE(adam): fill the grid array with references to the cells for easier access
 $("tr").each(function(r, row) {
@@ -98,13 +113,29 @@ $("#gameRunButton").prop("value", "Run");
 $("#gameRunButton").click(function() {
     //alert($(this).value());
     if(!running) {
-        loopInterval = setInterval(tick, 1000 / $("#gameSpeedDisplay").text());
-        running = true;
-        $(this).prop("value", "Stop");
+        startLoop();
     } else {
-        clearInterval(loopInterval);
-        running = false;
-        $(this).prop("value", "Run");
+        stopLoop();
+    }
+});
+
+$("#gameSpeedUp").click(function() {
+    curSpeed += 0.5;
+    $gameSpeed.text(curSpeed);
+    if(running) {
+        stopLoop();
+        startLoop();
+    }
+});
+
+$("#gameSpeedDown").click(function() {
+    if(curSpeed > 0.5) {
+        curSpeed -= 0.5;
+        $gameSpeed.text(curSpeed);
+        if(running) {
+            stopLoop();
+            startLoop();
+        }
     }
 });
 
