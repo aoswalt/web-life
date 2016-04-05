@@ -84,13 +84,13 @@ function tick() {
 function startLoop() {
     loopInterval = setInterval(tick, 1000 / $gameSpeed.text());
     running = true;
-    $(this).prop("value", "Stop");
+    $("#gameRunButton").prop("value", "Stop");
 }
 
 function stopLoop() {
     clearInterval(loopInterval);
     running = false;
-    $(this).prop("value", "Run");
+    $("#gameRunButton").prop("value", "Run");
 }
 
 
