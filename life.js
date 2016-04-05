@@ -29,18 +29,17 @@ function setCellLife(x, y, life) {
 
 function updateCells() {
     activeCellList = tempCellList.slice();
-    $("tr").each(function(r, row) {
-        var rowArr = [];
-        $(row).children(".cell").each(function(c, cell) {
-            var $cell = $(cell);
-            var alive = activeCellList[get1dIndex(c, r)];
+    $(".cell").each(function(c, cell) {
+        var xPos = cell.cellIndex;
+        var yPos = cell.parentElement.rowIndex;
+        var $cell = $(cell);
+        var alive = activeCellList[get1dIndex(xPos, yPos)];
 
-            if(alive && !$cell.hasClass("alive")) {
-                $cell.addClass("alive");
-            } else if(!alive) {
-                $cell.removeClass("alive");
-            }
-        });
+        if(alive && !$cell.hasClass("alive")) {
+            $cell.addClass("alive");
+        } else if(!alive) {
+            $cell.removeClass("alive");
+        }
     });
 }
 
@@ -111,7 +110,6 @@ for(var i = 0; i != cellCount; ++i) {
 
 $("#gameRunButton").prop("value", "Run");
 $("#gameRunButton").click(function() {
-    //alert($(this).value());
     if(!running) {
         startLoop();
     } else {
@@ -137,6 +135,10 @@ $("#gameSpeedDown").click(function() {
             startLoop();
         }
     }
+});
+
+$(".cell").click(function() {
+    alert(this.cellIndex + "  " + this.parentElement.rowIndex);
 });
 
 
