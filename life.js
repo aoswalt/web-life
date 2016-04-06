@@ -14,9 +14,7 @@ var tempCellList = [];
 
 var loopInterval;
 var running = false;
-var $gameSpeed = $("#gameSpeedDisplay");
-var curSpeed = parseFloat($gameSpeed.text());
-
+var curSpeed = 5.0;
 
 function get1dIndex(x, y) {
     return x + y * width;
@@ -77,7 +75,7 @@ function tick() {
 }
 
 function startLoop() {
-    loopInterval = setInterval(tick, 1000 / $gameSpeed.text());
+    loopInterval = setInterval(tick, 1000 / curSpeed);
     running = true;
     $("#gameRunButton").prop("value", "Stop");
 }
@@ -104,7 +102,6 @@ for(var i = 0; i != cellCount; ++i) {
     tempCellList.push(false);
 }
 
-$("#gameRunButton").prop("value", "Run");
 $("#gameRunButton").click(function() {
     if(!running) {
         startLoop();
@@ -113,23 +110,14 @@ $("#gameRunButton").click(function() {
     }
 });
 
-$("#gameSpeedUp").click(function() {
-    curSpeed += 0.5;
-    $gameSpeed.text(curSpeed);
+
+$("#gameSpeedDisplay").text(curSpeed.toFixed(1));
+$("#gameSpeedRange").change(function() {
+    curSpeed = parseFloat(this.value);
+    $("#gameSpeedDisplay").text(curSpeed.toFixed(1));
     if(running) {
         stopLoop();
         startLoop();
-    }
-});
-
-$("#gameSpeedDown").click(function() {
-    if(curSpeed > 0.5) {
-        curSpeed -= 0.5;
-        $gameSpeed.text(curSpeed);
-        if(running) {
-            stopLoop();
-            startLoop();
-        }
     }
 });
 
@@ -150,6 +138,3 @@ setCellLife(4, 3, true);
 setCellLife(3, 2, true);
 setCellLife(2, 7, true);
 updateCells();
-
-
-//alert(cellCount + "  " + width + "  " + height + "  " + activeCellList.length);
