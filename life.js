@@ -35,11 +35,7 @@ function updateCells() {
         var $cell = $(cell);
         var alive = activeCellList[get1dIndex(xPos, yPos)];
 
-        if(alive && !$cell.hasClass("alive")) {
-            $cell.addClass("alive");
-        } else if(!alive) {
-            $cell.removeClass("alive");
-        }
+        $cell.toggleClass("alive", alive);
     });
 }
 
@@ -138,7 +134,12 @@ $("#gameSpeedDown").click(function() {
 });
 
 $(".cell").click(function() {
-    alert(this.cellIndex + "  " + this.parentElement.rowIndex);
+    $(this).toggleClass("alive");
+
+    var xPos = this.cellIndex;
+    var yPos = this.parentElement.rowIndex;
+    setCellLife(xPos, yPos, $(this).hasClass("alive"));
+    updateCells();
 });
 
 
