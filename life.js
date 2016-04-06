@@ -102,6 +102,27 @@ for(var i = 0; i != cellCount; ++i) {
     tempCellList.push(false);
 }
 
+$("#gameLayoutPresets").prop("selectedIndex", -1);
+$("#gameLayoutPresets").change(function() {
+    switch(this.value) {
+        case "glider":
+            setCellLife(2, 4, true);
+            setCellLife(3, 4, true);
+            setCellLife(4, 4, true);
+            setCellLife(4, 3, true);
+            setCellLife(3, 2, true);
+            break;
+        case "toad":
+            setCellLife(11, 11, true);
+            setCellLife(12, 11, true);
+            setCellLife(13, 11, true);
+            setCellLife(12, 12, true);
+            setCellLife(13, 12, true);
+            setCellLife(14, 12, true);
+    }
+    updateCells();
+});
+
 $("#gameRunButton").click(function() {
     if(!running) {
         startLoop();
@@ -113,6 +134,7 @@ $("#gameRunButton").click(function() {
 $("#gameClearButton").click(function() {
     tempCellList.fill(false);
     updateCells();
+    $("#gameLayoutPresets").prop("selectedIndex", -1);
 });
 
 $("#gameSpeedDisplay").text(curSpeed.toFixed(1));
@@ -133,12 +155,3 @@ $(".cell").click(function() {
     setCellLife(xPos, yPos, $(this).hasClass("alive"));
     updateCells();
 });
-
-
-setCellLife(2, 4, true);
-setCellLife(3, 4, true);
-setCellLife(4, 4, true);
-setCellLife(4, 3, true);
-setCellLife(3, 2, true);
-setCellLife(2, 7, true);
-updateCells();
