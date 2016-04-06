@@ -105,6 +105,7 @@ for(var i = 0; i != cellCount; ++i) {
 $("#gameLayoutPresets").prop("selectedIndex", -1);
 $("#gameLayoutPresets").change(function() {
     switch(this.value) {
+        tempCellList.fill(false);
         case "glider":
             setCellLife(2, 4, true);
             setCellLife(3, 4, true);
