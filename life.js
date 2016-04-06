@@ -110,6 +110,10 @@ $("#gameRunButton").click(function() {
     }
 });
 
+$("#gameClearButton").click(function() {
+    tempCellList.fill(false);
+    updateCells();
+});
 
 $("#gameSpeedDisplay").text(curSpeed.toFixed(1));
 $("#gameSpeedRange").change(function() {
