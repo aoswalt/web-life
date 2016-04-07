@@ -120,6 +120,52 @@ $("#gameLayoutPresets").change(function() {
             setCellLife(12, 12, true);
             setCellLife(13, 12, true);
             setCellLife(14, 12, true);
+            break;
+        case "pinwheel":
+            setCellLife(10, 9, true);
+            setCellLife(11, 9, true);
+            setCellLife(12, 9, true);
+            setCellLife(13, 9, true);
+
+            setCellLife(9, 10, true);
+            setCellLife(9, 11, true);
+            setCellLife(9, 12, true);
+            setCellLife(9, 13, true);
+
+            setCellLife(14, 10, true);
+            setCellLife(14, 11, true);
+            setCellLife(14, 12, true);
+            setCellLife(14, 13, true);
+
+            setCellLife(10, 14, true);
+            setCellLife(11, 14, true);
+            setCellLife(12, 14, true);
+            setCellLife(13, 14, true);
+
+            setCellLife(12, 6, true);
+            setCellLife(12, 7, true);
+            setCellLife(13, 6, true);
+            setCellLife(13, 7, true);
+
+            setCellLife(6, 10, true);
+            setCellLife(7, 10, true);
+            setCellLife(6, 11, true);
+            setCellLife(7, 11, true);
+
+            setCellLife(16, 12, true);
+            setCellLife(17, 12, true);
+            setCellLife(16, 13, true);
+            setCellLife(17, 13, true);
+
+            setCellLife(10, 16, true);
+            setCellLife(11, 16, true);
+            setCellLife(10, 17, true);
+            setCellLife(11, 17, true);
+
+            setCellLife(12, 11, true);
+            setCellLife(13, 12, true);
+            setCellLife(11, 13, true);
+            break;
     }
     updateCells();
 });
