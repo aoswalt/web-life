@@ -86,10 +86,6 @@ function stopLoop() {
     $("#gameRunButton").prop("value", "Run");
 }
 
-function setCssTransitionSpeed() {
-    $(".cell").css("transition", "background-color " + (0.5 / curSpeed) + "s");
-}
-
 
 //NOTE(adam): fill the grid array with references to the cells for easier access
 $("tr").each(function(r, row) {
@@ -189,7 +185,6 @@ $("#gameClearButton").click(function() {
 });
 
 $("#gameSpeedDisplay").text(curSpeed.toFixed(1));
-setCssTransitionSpeed();
 $("#gameSpeedRange").change(function() {
     curSpeed = parseFloat(this.value);
     $("#gameSpeedDisplay").text(curSpeed.toFixed(1));
@@ -197,7 +192,6 @@ $("#gameSpeedRange").change(function() {
         stopLoop();
         startLoop();
     }
-    setCssTransitionSpeed();
 });
 
 $(".cell").click(function() {
