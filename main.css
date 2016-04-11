@@ -47,7 +47,18 @@ span {
     font-family: sans-serif;
 }
 
-#gameRunButton {
+#gameButtons,
+#gamePresetControls,
+#gameSpeedControls {
+    line-height: 2rem;
+    vertical-align: middle;
+}
+
+#gameSpeedRange {
+    vertical-align: middle;;
+}
+
+#gameButtons {
     float: left;
     margin-left: 0.5rem;
 }
@@ -68,6 +79,7 @@ span {
 }
 
 input[type="button"] {
+    width: 3.5rem;
     padding: 0.05rem 0.5rem;
 }
 
